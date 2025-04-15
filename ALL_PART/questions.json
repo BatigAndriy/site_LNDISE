@@ -202,5 +202,122 @@
         "Інформація про відкриття видимості для машиністів поїздів (зі сторони руху поїзда) на переїзд, де відбулося зіткнення."
     ]
       }
+  ],
+
+
+  "news": [
+    {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/news-section/news-exp_1.jpg",
+      "about": "Нарада експертів із представниками правоохоронних органів.",
+      "date": "3 квітня 2025"
+    },
+    {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/news-section/news-exp_2.jpg",
+      "about": "Співпраця з Національним університетом \"Львівська політехніка\"",
+      "date": "3 квітня 2025"
+    },
+    {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/news-section/news-exp_3.jpg",
+      "about": "Меморандум із Університетом Короля Данила",
+      "date": "31 березня 2025"
+    },
+    {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/news-section/news-exp_4.jpg",
+      "about": "У Львівському НДІСЕ в.о. директора Артем Щербак",
+      "date": "24 березня 2025"
+    }
+  ],
+
+  "experts": [
+    {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/expert-1.jpg",
+      "name": "Ярослав Болжеларський",
+      "position": "провідний науковий співробітник",
+      "description": "к.т.н., доцент, вища освіта за спеціальністю «Рухомий склад та спеціальна техніка залізничного транспорту».",
+      "specialties": "експертні спеціальності - 10.11, 10.12.",
+      "id": "expert-1"
+    },
+    {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/expert-8.jpg",
+      "name": "Петро Грицишин",
+      "position": "провідний науковий співробітник",
+      "description": "к.т.н., доцент, вища освіта за спеціальністю «Автоматизація і комплексна механізація процесів поліграфічного виробництва».",
+      "specialties": "експертні спеціальності - 8.9, 10.3.",
+      "id": "expert-8"
+    },
+    {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/expert-6.jpg",
+      "name": "Микола Кузін",
+      "position": "провідний науковий співробітник",
+      "description": "д.т.н., професор, вища освіта за спеціальністю «Рухомий склад та спеціальна техніка залізничного транспорту».",
+      "specialties": "експертні спеціальності - 10.11, 10.12.",
+      "id": "expert-6"
+    },
+    {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/expert-5.jpg",
+      "name": "Олег Возняк",
+      "position": "провідний науковий співробітник",
+      "description": "к.т.н., доцент, вища освіта за спеціальністю «Автоматика та автоматизація на залізничному транспорті».",
+      "specialties": "експертна спеціальність - 10.11.",
+      "id": "expert-5"
+    },
+
+     {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/expert-9.jpg",
+      "name": "Юрій Терещак",
+      "position": "судовий експерт",
+      "description": "к.т.н., доцент, вища освіта за спеціальністю «Рухомий склад та спеціальна техніка залізничного транспорту».",
+      "specialties": "експертна спеціальність - 10.11.",
+      "id": "expert-9"
+    },
+    {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/expert-10.jpg",
+      "name": "Олена Баль",
+      "position": "провідний науковий співробітник",
+      "description": "к.т.н., доцент, завідувач кафедри, вища освіта за спеціальністю «Залізничні споруди та колійне господарство».",
+      "specialties": "експертні спеціальності - 10.13.1, 10.13.2.",
+      "id": "expert-10"
+    },
+    {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/expert-2.jpg",
+      "name": "Андрій Кузишин",
+      "position": "науковий співробітник",
+      "description": "P.H.D., доцент, вища освіта за спеціальністю «Локомотиви та локомотивне господарство».",
+      "specialties": "експертні спеціальності - 10.11, 10.12.",
+      "id": "expert-2"
+    },
+    {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/expert-4.jpg",
+      "name": "Олег Джус",
+      "position": "завідувач лабораторії",
+      "description": "магістр, вища освіта за спеціальністю «Організація перевезень і управління на залізничному транспорті».",
+      "specialties": "експертна спеціальність - 10.11.",
+      "id": "expert-4"
+    },
+    {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/expert-7.jpg",
+      "name": "Іван Кравець",
+      "position": "науковий співробітник",
+      "description": "P.H.D., доцент, вища освіта за спеціальністю «Залізничні споруди та колійне господарство».",
+      "specialties": "експертні спеціальності - 10.13.1, 10.13.2.",
+      "id": "expert-7"
+    },
+    {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/expert-11.jpg",
+      "name": "Анатолій Фалендиш",
+      "position": "провідний науковий співробітник",
+      "description": "д.т.н., професор, вища освіта за спеціальністю «Локомотиви».",
+      "specialties": "експертна спеціальність - 10.12.",
+      "id": "expert-11"
+    },
+    {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/expert-3.jpg",
+      "name": "Андрій Батіг",
+      "position": "провідний науковий співробітник",
+      "description": "магістр, вища освіта за спеціальністю «Вагони та вагонне господарство».",
+      "specialties": "експертні спеціальності - 10.11, 10.12.",
+      "id": "expert-3"
+    }
   ]
 }
+
