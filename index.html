@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Лабораторія ЗТД ЛЬвівського НДІСЕ</title>
-    <link rel="icon" href="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/header/logo-small-mobile.png" type="image/x-icon" />
+    <link rel="icon" href="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/header/logo-small-2.png" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
   </head>
@@ -12,7 +12,7 @@
      <div class="main-manu">
      <div class="nav-el-mobile">
        <div class="nav-menu-mobile logo-small" id="logo-small">
-          <img src="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/header/logo-small-2.png" class="logo-small-mobile">
+          <img src="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/header/logo-small-mobile.png" class="logo-small-mobile">
        </div>
          <div class="nav-menu-mobile mobile-menu" id="open-menu">
              <img src="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/header/open-btn.png" class="open-mobile-menu">
@@ -62,8 +62,8 @@
             </p>
 
             <div class="header_section_button">
-              <button class="button menu-title" data-scroll-to="expert-bt">Експерти</button>
-              <button class="button menu-title" data-scroll-to="expert-work-bt">Експертизи</button>
+              <button class="button menu-title" data-scroll-to="expert-bt">Експертизи</button>
+              <button class="button menu-title" data-scroll-to="questions-bt">Як призначити</button>
             </div>
           </div>
 
@@ -186,7 +186,7 @@
                         <p class="h3 card-title">ОЖИДІВСЬКА КАТАСТРОФА</p>
                         <input type="checkbox" id="toggle-text-1" class="toggle-checkbox">
                         <p class="card-description">У Бузькому районі Львівщини з рейок зійшли 15 цистерн з жовтим фосфором, шість із них зайнялися.
-                            <span class="more-text">OЧерез горіння утворилася токсична хмара, яка загрожувала 14 населеним пунктам.</span>
+                            <span class="more-text">Через горіння утворилася токсична хмара, яка загрожувала 14 населеним пунктам.</span>
                         </p>
                     </div>
                     <label for="toggle-text-1" class="card-btn"></label>
@@ -398,15 +398,15 @@
            <div class="contact__hours">
               <ul class="contact__hours-list">
                 <li class="contact__hours-title">Графік роботи</li>
-                <li class="contact__hours-item">Пн–Пт: 8:00 – 16:45</li>
-                <li class="contact__hours-item">Сб: вихідний</li>
-                <li class="contact__hours-item">Нд: вихідний</li>
+                <li class="contact__hours-item">Пн–Чт: 8:00 – 16:45</li>
+                <li class="contact__hours-item">Пт: 8:00 – 15:330</li>
+                <li class="contact__hours-item">Сб-Нд: вихідний</li>
               </ul>
            </div>
         </div>
 
     </section>
-     <section class="questions" data-id="questions-btt">
+     <section class="questions" data-id="questions-bt">
           <div class="open-top">
              <img src="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/hide-section/free-icon-help.svg" alt="question" class="img-question">
              <p class="open-top-title" data-open="main-container-questions">Питання для ЗТ експертизи
@@ -1051,11 +1051,12 @@ async function loadExperts() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-      // Завантажуємо питання
-      await loadQuestions();
 
       // Завантажуємо новини
       await loadNews();
+
+      // Завантажуємо питання
+      await loadQuestions();
 
       // Завантажуємо експертів
       await loadExperts();
