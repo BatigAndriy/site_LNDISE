@@ -902,7 +902,7 @@ li.dropdown-item {
    color: #333;
    border-bottom: 2px solid #eee;
    padding-bottom: 0.5em;
-   margin-bottom: 1.2em;
+   margin-bottom: 0.2em;
    font-size: clamp(0.8rem, 1.2vw, 1.2em);
    text-transform: uppercase;
    font-family: "Montserrat", sans-serif;
@@ -928,7 +928,7 @@ li.dropdown-item {
    flex: 0 0 auto;
    display: flex;
    align-items: center;
-   padding: 0.8em 0.5em;
+   padding: 0.2em 0.5em;
    gap: 0.8em;
    border-bottom: 1px solid #ddd;
    background-color: #fff;
