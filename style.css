@@ -553,7 +553,7 @@ li.dropdown-item {
     .nav-el-mobile {
        display: flex;
        justify-content: space-between;
-       padding: 0.3em 3% 0.3em 3%;
+       padding: 0.3em 1em 0.3em 1em;
        z-index: 1;
     }
 
@@ -570,7 +570,6 @@ li.dropdown-item {
         display: block;
         height: 1.3em;
         width: 1.3em;
-        margin: 0 0.5em 0 0em;
     }
 
 
@@ -2105,16 +2104,24 @@ p.diagram-title:hover::after {
     }
 
     .top-card .card-content {
-        max-width: 92%;
-        left: 4%;
+        max-width: 96%;
+        left: 2%;
    }
+
+    .card-description {
+        min-height: 8.2em;
+    }
+
+    .part-content {
+        min-height: 9.2em;
+    }
 }
 
 
 @media (max-width: 530px) {
 
-     .scrollbar {
-       gap: 1.5%;
+    .section.top {
+        padding: 1.2em 1em 0.5em 1em;
     }
 
 
@@ -2140,6 +2147,14 @@ p.diagram-title:hover::after {
     .top-card {
        min-width: 8.5em;
     }
+
+    .top-card .card-content {
+       padding: 1em 0.3em 0 0.3em;
+    }
+
+    .part-content {
+        min-height: 8.5em;
+    }
 }
 
 
@@ -2147,17 +2162,17 @@ p.diagram-title:hover::after {
 
 
    .card-description {
-      font-size: 0.53rem;
+      font-size: 0.55rem;
    }
 
 
    .top-card .card-subtitle {
-      font-size: 0.55rem;
+      font-size: 0.6rem;
    }
 
 
    .top-card .card-title {
-      font-size: 0.55rem;
+      font-size: 0.6rem;
    }
 }
 
@@ -2165,23 +2180,28 @@ p.diagram-title:hover::after {
 @media (max-width: 450px) {
 
 
+    .container-section-top {
+       width: 100%;
+    }
+
+
    .scrollbar-item {
-      min-width: 7em;
+      min-width: 7.8em;
    }
 
 
    .card-description {
-      font-size: 0.5rem;
+      font-size: 0.55rem;
    }
 
 
    .top-card .card-subtitle {
-      font-size: 0.5rem;
+      font-size: 0.55rem;
    }
 
 
    .top-card .card-title {
-      font-size: 0.5rem;
+      font-size: 0.55rem;
    }
 
 
@@ -2191,8 +2211,21 @@ p.diagram-title:hover::after {
 
 
     .part-content {
-        min-height: 10em;
+        min-height: 8em;
     }
+}
+
+
+@media (max-width: 395px) {
+
+   .scrollbar-item {
+      min-width: 7em;
+   }
+
+
+   .part-content {
+     min-height: 10em;
+   }
 }
 
 
@@ -2718,6 +2751,10 @@ p.section-subtitle-science {
 
 
 @media (max-width: 580px) {
+
+    .science {
+      padding: 1em 1em 0em 1em;
+    }
 
     .science-small-container_1,  .science-small-container_2,  .science-small-container_3 {
       gap: 0.8em 0.8em;
@@ -3405,13 +3442,17 @@ ul.contact__hours-list {
     ul.contact__hours-list {
        padding: 1em 0.7em 1em 0.7em;
     }
+
+    .contact__container {
+      width: 100%;
+   }
 }
 
 
 @media screen and (max-width: 550px) {
 
    .contact {
-      padding: 2.7em 1em 3em 1em;
+      padding: 2.7em 1em 3em 1.5em;
     }
 
    .contact__container {
