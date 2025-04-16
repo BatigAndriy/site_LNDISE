@@ -553,7 +553,7 @@ li.dropdown-item {
     .nav-el-mobile {
        display: flex;
        justify-content: space-between;
-       padding: 0.3em 1em 0.3em 1em;
+       padding: 0.3em 1.5em 0.3em 1.5em;
        z-index: 1;
     }
 
@@ -3452,7 +3452,7 @@ ul.contact__hours-list {
 @media screen and (max-width: 550px) {
 
    .contact {
-      padding: 2.7em 1em 3em 1.5em;
+      padding: 2.7em 1em 3em 1em;
     }
 
    .contact__container {
