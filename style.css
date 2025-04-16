@@ -3437,7 +3437,7 @@ p.open-questions {
     display: block;
     text-align: left;
     color: black;
-    font-size: clamp(0.6rem, 1.1vw, 1.1rem);
+    font-size: clamp(0.6rem, 1vw, 1rem);
     padding: 0.7em 0em 0.7em 0;
     font-weight: 600;
     text-transform: uppercase;
