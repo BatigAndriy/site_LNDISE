@@ -2339,6 +2339,7 @@ p.diagram-title:hover::after {
 
 .expertise-gallery .expertise-gallery_container img {
     width: 100%;
+    max-height: 12em;
     height: 100%;
     border-radius: 8px;
     transition: transform 0.4s ease;
@@ -2360,7 +2361,6 @@ p.diagram-title:hover::after {
     }
 
      .expertise-gallery .expertise-gallery_container {
-        justify-content: center;
         gap: 1.2em 1.2em;
     }
 }
@@ -2369,7 +2369,6 @@ p.diagram-title:hover::after {
 @media screen and (max-width: 650px) {
 
      .expertise-gallery .expertise-gallery_container {
-        justify-content: center;
         gap: 1em 1em;
     }
 }
@@ -2382,7 +2381,6 @@ p.diagram-title:hover::after {
     }
 
     .expertise-gallery .expertise-gallery_container {
-        justify-content: center;
         gap: 0.8em 0.8em;
     }
 
@@ -2487,7 +2485,7 @@ p.section-subtitle-science {
     display: block;
     width: 14.5em;
     height: 100%;
-    max-height: 16.7em;
+    max-height: 16.5em;
     border-radius: 8px;
     transition: transform 0.4s ease;
 }
@@ -2594,7 +2592,7 @@ p.section-subtitle-science {
     display: block;
     width: 14.5em;
     height: 100%;
-    max-height: 13em;
+    max-height: 12.5em;
     border-radius: 8px;
     transition: transform 0.4s ease;
 }
@@ -3546,7 +3544,7 @@ ul.contact__hours-list {
 
 
 .open-top {
-   padding: 1.5em 5% 1.5em 5%;
+   padding: 2.7em 5% 1.5em 5%;
    display: flex;
    gap: 1%;
    align-items: center;
@@ -3584,7 +3582,7 @@ p.open-questions {
     display: block;
     text-align: left;
     color: black;
-    font-size: clamp(0.6rem, 1vw, 1rem);
+    font-size: clamp(0.6rem, 0.9vw, 0.9rem);
     padding: 0.7em 0em 0.7em 0;
     font-weight: 600;
     text-transform: uppercase;
@@ -3625,10 +3623,9 @@ p.open-questions::after {
     width: 100%;
     margin: 0 auto;
     background: white;
-    padding: 0.5em 5% 1.5em 5%;
+    padding: 0.5em 5% 0em 8%;
     border-radius: 0.8em;
     font-family: 'Chakra Petch', sans-serif;
-    display: none;
     background-image: url(https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/hide-section/top-section-bg.png);
 }
 
