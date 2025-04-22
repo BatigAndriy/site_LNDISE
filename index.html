@@ -361,25 +361,22 @@
        </div>
     </section>
      <div class="container swiper" data-id="expert-bt">
-    <div class="swiper-slide-button swiper-button-prev">
-       <img src="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/arrow_left.svg" alt="Попередня стрілка" class="arrow-left">
-    </div>
-
-    <div class="title-swiper">
-       <p class="experts">НАШІ ЕКСПЕРТИ</p>
-    </div>
-
-    <div class="slider-wrapper">
-      <div class="card-list swiper-wrapper">
-        <!-- Елементи з experts.json будуть додані сюди JavaScript-ом -->
-      </div>
-    <div class="swiper-pagination"></div>
-    </div>
-
-    <div class="swiper-slide-button swiper-button-next">
-      <img src="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/arrow_right.svg" alt="Наступна стрілка" class="arrow-right">
-    </div>
-   </div>
+        <div class="swiper-slide-button swiper-button-prev">
+           <img src="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/arrow_left.svg" alt="Попередня стрілка" class="arrow-left">
+        </div>
+        <div class="title-swiper">
+           <p class="experts">НАШІ ЕКСПЕРТИ</p>
+        </div>
+        <div class="slider-wrapper">
+          <div class="card-list swiper-wrapper">
+            <!-- Елементи з experts.json будуть додані сюди JavaScript-ом -->
+          </div>
+        <div class="swiper-pagination"></div>
+        </div>
+        <div class="swiper-slide-button swiper-button-next">
+          <img src="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/arrow_right.svg" alt="Наступна стрілка" class="arrow-right">
+        </div>
+     </div>
      <section class="questions" data-id="questions-bt">
           <div class="open-top">
              <img src="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/hide-section/free-icon-help.svg" alt="question" class="img-question">
@@ -509,83 +506,66 @@
   </body>
 
   <script>
+// ✅ Мобільне меню
 
+function handleMobileMenuHover(triggerSelector, menuSelector, menuMain, icon_1, icon_2) {
+  const trigger = document.querySelector(triggerSelector);
+  const menu = document.querySelector(menuSelector);
+  const iconFirst = document.querySelector(icon_1);
+  const iconSecond = document.querySelector(icon_2);
 
-// ✅ Функція для мобільного меню
+  if (trigger && menu) {
+    iconSecond.addEventListener("click", () => {
+      menu.classList.remove("open");
+      iconFirst.style.display = "block";
+      iconSecond.style.display = "none";
+    });
 
-    function handleMobileMenuHover(triggerSelector, menuSelector, menuMain, icon_1, icon_2) {
-        const trigger = document.querySelector(triggerSelector);
-        const menu = document.querySelector(menuSelector);
-        const menuBig = document.querySelector(menuMain);
-        const iconFirst = document.querySelector(icon_1);
-        const iconSecond = document.querySelector(icon_2);
+    iconFirst.addEventListener("click", () => {
+      menu.classList.add("open");
+      iconFirst.style.display = "none";
+      iconSecond.style.display = "block";
+    });
+  }
+}
 
-        if (trigger && menu) {
-            // Закриваємо меню при натисканні на другу іконку
-            iconSecond.addEventListener("click", () => {
-                menu.classList.remove("open");
-                iconFirst.style.display = "block";
-                iconSecond.style.display = "none";
-            });
+// ✅ Слайдер експертів
 
-            // Якщо перша іконка натискається, меню відкривається
-            iconFirst.addEventListener("click", () => {
-                menu.classList.add("open");
-                iconFirst.style.display = "none";
-                iconSecond.style.display = "block";
-            });
-        }
-    }
+function setupSlider({ cardListSelector, cardItemSelector, prevButtonSelector, nextButtonSelector, paginationSelector, slidesPerView = 3 }) {
+  const cardList = document.querySelector(cardListSelector);
+  const slides = document.querySelectorAll(cardItemSelector);
+  const prevButton = document.querySelector(prevButtonSelector);
+  const nextButton = document.querySelector(nextButtonSelector);
+  const pagination = document.querySelector(paginationSelector);
 
-    handleMobileMenuHover('.nav-menu-mobile.mobile-menu', '.desktop-navigation-menu', '.main-manu', '.open-mobile-menu', '.close-mobile-menu');
+  if (!cardList || slides.length === 0) return;
 
+  let currentIndex = 0;
+  const marginLeft = parseInt(window.getComputedStyle(slides[0]).marginLeft, 10);
 
-// ✅ Слайдер
-function setupSlider({
-  cardListSelector,
-  cardItemSelector,
-  prevButtonSelector,
-  nextButtonSelector,
-  paginationSelector,
-  slidesPerView = 3
-}) {
-      const cardList = document.querySelector(cardListSelector);
-      const slides = document.querySelectorAll(cardItemSelector);
-      const prevButton = document.querySelector(prevButtonSelector);
-      const nextButton = document.querySelector(nextButtonSelector);
-      const pagination = document.querySelector(paginationSelector);
+  // Функція для оновлення слайдера
+  function updateSlider() {
+    const containerRect = cardList.getBoundingClientRect();
+    const slideRect = slides[currentIndex].getBoundingClientRect();
+    const shift = slideRect.left - containerRect.left - marginLeft;
+    cardList.style.transform = `translateX(-${shift}px)`;
+    updatePagination();
+  }
 
-      if (!cardList || slides.length === 0) return;
-
-      let currentIndex = 0;
-      const marginLeft = parseInt(window.getComputedStyle(slides[0]).marginLeft, 10);
-      let startX = 0;
-      let endX = 0;
-
-      function updateSlider() {
-        const containerRect = cardList.getBoundingClientRect();
-        const slideRect = slides[currentIndex].getBoundingClientRect();
-        const shift = slideRect.left - containerRect.left - marginLeft;
-
-        cardList.style.transform = `translateX(-${shift}px)`;
-        updatePagination();
-      }
-
-function updatePagination() {
+  // Функція для оновлення пагінації
+  function updatePagination() {
     if (!pagination) return;
     pagination.innerHTML = "";
-
-    const visibleBullets = 4;
+    const visibleBullets = Math.min(slides.length, 4);
 
     for (let i = 0; i < visibleBullets; i++) {
       const bullet = document.createElement("span");
       bullet.classList.add("swiper-pagination-bullet");
-
       if (i === currentIndex % visibleBullets) {
         bullet.classList.add("swiper-pagination-bullet-active");
       }
 
-      bullet.addEventListener("click", function () {
+      bullet.addEventListener("click", () => {
         currentIndex = Math.floor(currentIndex / visibleBullets) * visibleBullets + i;
         if (currentIndex >= slides.length) currentIndex = 0;
         updateSlider();
@@ -595,76 +575,55 @@ function updatePagination() {
     }
   }
 
+  // Ініціалізація слайдера
   function init() {
     const containerWidth = cardList.offsetWidth;
     const slideWidth = containerWidth / slidesPerView - marginLeft * 2;
-
     slides.forEach(slide => {
       slide.style.width = `${slideWidth}px`;
     });
-
     updateSlider();
   }
 
-  if (nextButton) {
-    nextButton.addEventListener("click", function () {
-      if (currentIndex < slides.length - slidesPerView) {
-        currentIndex++;
-      } else {
-        currentIndex = 0;
-      }
-      updateSlider();
-    });
-  }
-
-  if (prevButton) {
-    prevButton.addEventListener("click", function () {
-      if (currentIndex > 0) {
-        currentIndex--;
-      } else {
-        currentIndex = slides.length - slidesPerView;
-      }
-      updateSlider();
-    });
-  }
-
-  // Додавання можливості прокручування слайдів пальцем
-  cardList.addEventListener('touchstart', function (e) {
-    startX = e.touches[0].clientX;
+  // Обробка кліку по кнопках слайдера
+  if (nextButton) nextButton.addEventListener("click", () => {
+    currentIndex = (currentIndex < slides.length - slidesPerView) ? currentIndex + 1 : 0;
+    updateSlider();
   });
 
-  cardList.addEventListener('touchmove', function (e) {
-    endX = e.touches[0].clientX;
+  if (prevButton) prevButton.addEventListener("click", () => {
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - slidesPerView;
+    updateSlider();
   });
 
-  cardList.addEventListener('touchend', function () {
-    if (startX > endX + 50) {
-      // Проведення пальцем вліво – наступний слайд
-      if (currentIndex < slides.length - slidesPerView) {
-        currentIndex++;
-      } else {
-        currentIndex = 0;
-      }
-      updateSlider();
-    } else if (startX < endX - 50) {
-      // Проведення пальцем вправо – попередній слайд
-      if (currentIndex > 0) {
-        currentIndex--;
-      } else {
-        currentIndex = slides.length - slidesPerView;
-      }
-      updateSlider();
-    }
+  // Обробка свайпу на мобільних пристроях
+  let startX, endX;
+  cardList.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+  cardList.addEventListener('touchmove', e => endX = e.touches[0].clientX);
+  cardList.addEventListener('touchend', () => {
+    if (startX > endX + 50) currentIndex = (currentIndex < slides.length - slidesPerView) ? currentIndex + 1 : 0;
+    else if (startX < endX - 50) currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - slidesPerView;
+    updateSlider();
   });
 
-  window.addEventListener("resize", init);
+  // Встановлення висоти слайдів після завантаження контенту
+  window.addEventListener("resize", () => {
+    // Використовуємо requestAnimationFrame, щоб синхронізувати зміни
+    requestAnimationFrame(init);
+  });
 
+  // Визначаємо розміри слайдів після завантаження контенту
+  window.addEventListener('load', () => {
+    requestAnimationFrame(init);
+  });
+
+  // Ініціалізація слайдера
   init();
 }
 
 
+// ✅ Пропорції для галерей
 
-//✅ Вирівнювання слайдера для наукової діяльності
 function adjustImageWidth(containerSelector, imageSelector, imageWidthOverride = null, mobileOverride = null) {
   const container = document.querySelector(containerSelector);
   if (!container) return;
@@ -675,305 +634,156 @@ function adjustImageWidth(containerSelector, imageSelector, imageWidthOverride =
 
   function updateImageWidth() {
     const containerWidth = container.offsetWidth;
-
-    // Визначаємо скільки зображень показувати
     let imagesPerRow = imageWidthOverride;
-
-    // Якщо менше 600px і є mobileOverride — використовуємо його
     if (window.innerWidth < 600 && mobileOverride !== null) {
       imagesPerRow = mobileOverride;
     }
-
-    // Перевірка на всякий випадок, щоб уникнути ділення на 0
     if (!imagesPerRow || imagesPerRow <= 0) return;
 
     const imageWidth = (containerWidth - (imagesPerRow - 1) * gap) / imagesPerRow;
-
-    images.forEach(image => {
-      image.style.width = `${imageWidth}px`;
-    });
+    images.forEach(image => image.style.width = `${imageWidth}px`);
   }
 
   updateImageWidth();
   window.addEventListener('resize', updateImageWidth);
 }
 
+// ✅ Горизонтальна прокрутка (повертає назад)
 
-adjustImageWidth('.expertise-gallery_container', '.expertise-gallery_items img', 4, 3); // десктоп: 4, мобільний: 2
-adjustImageWidth('.science-small-container_1', '.science_items_1 img', 2, 2); // десктоп: 2, мобільний: 1
-adjustImageWidth('.science-small-container_2', '.science_items_2 img', 4, 3); // десктоп: 4, мобільний: 2
-adjustImageWidth('.science-small-container_3', '.science_items_3 img', 2, 2); // десктоп: 2, мобільний: 1
+function addScrollEvents(containerElement) {
+  const container = document.querySelector(containerElement);
+  if (!container) return;
 
+  const scrollToStart = () => {
+    container.scrollTo({ left: 0, behavior: 'smooth' });
+  };
 
-
-
-// ✅ Прокрутка контейнера горизонтального
-
-    function scrollToStart(containerElement) {
-        const container = document.querySelector(containerElement);
-        console.log('Початок прокручування!');
-        container.scrollTo({
-            left: 0,
-            behavior: 'smooth'
-        });
-    }
-
-    function addScrollEvents(containerElement) {
-        const container = document.querySelector(containerElement);
-
-        if (!container) {
-            console.log('Контейнер не знайдений');
-            return;
-        }
-
-        container.addEventListener('mouseup', function () {
-            console.log('Користувач припинив прокручування (відпустив мишку)!');
-            scrollToStart(containerElement);
-        });
-
-        container.addEventListener('mouseleave', function () {
-            console.log('Користувач вийшов за межі контейнера, повертаємо на початок');
-            scrollToStart(containerElement);
-        });
-
-        container.addEventListener('touchend', function () {
-        console.log('Користувач завершив дотик!');
-        scrollToStart(containerElement);
-    });
-
-    container.addEventListener('touchcancel', function () {
-        console.log('Дотик скасовано, повертаємо на початок');
-        scrollToStart(containerElement);
-    });
-    }
-
-addScrollEvents('.science-small-container_1');
-addScrollEvents('.science-small-container_2');
-addScrollEvents('.science-small-container_3');
-addScrollEvents('.expertise-gallery_container');
-
-
-
-//✅Прокрутка всієї сторінки до певного розділу
-
-// Функція для прокручування до відповідного контейнера
-function addScrollWithDataAttribute(buttonSelector, dataAttr) {
-    // Знаходимо всі кнопки, на які будемо додавати події
-    const buttons = document.querySelectorAll(buttonSelector);
-
-    // Додаємо події до кожної кнопки
-    buttons.forEach(button => {
-        button.addEventListener('click', function (event) {
-            event.preventDefault(); // Запобігаємо стандартному переходу за посиланням
-
-            // Отримуємо значення data-атрибута з кнопки
-            const scrollKey = button.dataset[dataAttr];
-
-            if (!scrollKey) {
-                console.warn(`Кнопка не має data-${dataAttr}`);
-                return;
-            }
-
-            // Знаходимо відповідний контейнер по data-id (можна теж змінити на параметр)
-            const container = document.querySelector(`[data-id="${scrollKey}"]`);
-
-            if (container) {
-                container.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                console.log(`Прокручено до: ${scrollKey}`);
-            } else {
-                console.warn(`Контейнер з data-id="${scrollKey}" не знайдений.`);
-            }
-        });
-    });
+  container.addEventListener('mouseup', scrollToStart);
+  container.addEventListener('mouseleave', scrollToStart);
+  container.addEventListener('touchend', scrollToStart);
+  container.addEventListener('touchcancel', scrollToStart);
 }
-// Кнопки з data-scroll-to="..."
-addScrollWithDataAttribute('.menu-title', 'scrollTo');
 
+// ✅ Прокрутка по data-атрибуту
 
-//✅ Функція прокрутки вертикального слайдера в новинах
-
-function initVerticalSlider({
-      sliderSelector,
-      itemSelector,
-      containerSelector,
-      buttonSelector,
-      slidesPerView = 3
-    }) {
-      const slider = document.querySelector(sliderSelector);
-      const items = document.querySelectorAll(itemSelector);
-      const moreBtn = document.querySelector(buttonSelector);
-      const container = document.querySelector(containerSelector);
-
-      let index = 0;
-
-      function updateSlider() {
-        if (items.length === 0) return;
-
-        const containerRect = slider.getBoundingClientRect();
-        const slideRect = items[index].getBoundingClientRect();
-        const marginTop = parseInt(window.getComputedStyle(items[0]).marginTop, 10) || 0;
-
-        const shift = slideRect.top - containerRect.top - marginTop;
-
-        slider.style.transform = `translateY(-${shift}px)`;
-        slider.style.transition = 'transform 0.5s ease';
-      }
-
-      function scrollToNextItem() {
-        index++;
-        if (index > items.length - slidesPerView) {
-          index = 0;
-        }
-        updateSlider();
-      }
-
-      function resetSlider() {
-        index = 0;
-        updateSlider();
-      }
-
-      function init() {
-        const containerHeight = container.offsetHeight;
-        const marginTop = parseInt(getComputedStyle(items[0]).marginTop, 10) || 0;
-        const marginBottom = parseInt(getComputedStyle(items[0]).marginBottom, 10) || 0;
-
-        const totalMargin = marginTop + marginBottom;
-        const slideHeight = (containerHeight / slidesPerView) - totalMargin;
-
-        items.forEach(item => {
-          item.style.height = `${slideHeight}px`;
-        });
-
-        updateSlider();
-      }
-
-      // Ініціалізація
-      window.addEventListener('load', init);
-      window.addEventListener('resize', init);
-
-      if (moreBtn) {
-        moreBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          scrollToNextItem();
-        });
-      }
-
+function addScrollWithDataAttribute(buttonSelector, dataAttr) {
+  const buttons = document.querySelectorAll(buttonSelector);
+  buttons.forEach(button => {
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      const scrollKey = button.dataset[dataAttr];
+      const container = document.querySelector(`[data-id="${scrollKey}"]`);
       if (container) {
-        container.addEventListener('mouseleave', () => {
-          resetSlider();
-        });
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-    }
+    });
+  });
+}
 
+// ✅ Вертикальний слайдер новин
 
+function initVerticalSlider({ sliderSelector, itemSelector, containerSelector, buttonSelector, slidesPerView = 3 }) {
+  const slider = document.querySelector(sliderSelector);
+  const items = document.querySelectorAll(itemSelector);
+  const moreBtn = document.querySelector(buttonSelector);
+  const container = document.querySelector(containerSelector);
+  let index = 0;
 
-//✅ Функція для питання слідчим
+  function updateSlider() {
+    if (items.length === 0) return;
+    const containerRect = slider.getBoundingClientRect();
+    const slideRect = items[index].getBoundingClientRect();
+    const marginTop = parseInt(window.getComputedStyle(items[0]).marginTop, 10) || 0;
+    const shift = slideRect.top - containerRect.top - marginTop;
+    slider.style.transform = `translateY(-${shift}px)`;
+    slider.style.transition = 'transform 0.5s ease';
+  }
+
+  function scrollToNextItem() {
+    index++;
+    if (index > items.length - slidesPerView) index = 0;
+    updateSlider();
+  }
+
+  function resetSlider() {
+    index = 0;
+    updateSlider();
+  }
+
+  function init() {
+    const containerHeight = container.offsetHeight;
+    const marginTop = parseInt(getComputedStyle(items[0]).marginTop, 10) || 0;
+    const marginBottom = parseInt(getComputedStyle(items[0]).marginBottom, 10) || 0;
+    const slideHeight = (containerHeight / slidesPerView) - (marginTop + marginBottom);
+    items.forEach(item => item.style.height = `${slideHeight}px`);
+    updateSlider();
+  }
+
+  window.addEventListener('load', init);
+  window.addEventListener('resize', init);
+  if (moreBtn) moreBtn.addEventListener('click', (e) => { e.preventDefault(); scrollToNextItem(); });
+  if (container) container.addEventListener('mouseleave', resetSlider);
+}
+
+// ✅ Тогли питань
 
 function setupToggle(toggleMain, containerMain, toggleSelector, containerSelector, mainArrowDown) {
   const toggleMainElement = document.querySelector(toggleMain);
   const containerMainElement = document.querySelector(containerMain);
   const arrowMainElement = document.querySelector(mainArrowDown);
 
-  // 🟢 Головний контейнер одразу відкритий
-  if (containerMainElement) {
-    containerMainElement.style.display = "block";
-  }
-
-  // 🔁 Логіка відкриття/закриття головного контейнера
+  if (containerMainElement) containerMainElement.style.display = "block";
   if (toggleMainElement && containerMainElement) {
     toggleMainElement.addEventListener("click", function (e) {
       e.stopPropagation();
-
       const isOpen = containerMainElement.style.display === "block";
       containerMainElement.style.display = isOpen ? "none" : "block";
-
-      if (arrowMainElement) {
-        arrowMainElement.classList.toggle("rotate-180", !isOpen);
-      }
+      if (arrowMainElement) arrowMainElement.classList.toggle("rotate-180", !isOpen);
     });
   }
 
   const toggles = document.querySelectorAll(toggleSelector);
   const containers = document.querySelectorAll(containerSelector);
+  containers.forEach(container => container.style.display = "none");
 
-  if (!toggles.length || !containers.length) return;
-
-  // ❗️Ховаємо всі підменю на старті
-  containers.forEach(container => {
-    container.style.display = "none";
-  });
-
-  // 📂 Клік на підпункт
   toggles.forEach(toggle => {
     toggle.addEventListener("click", function (e) {
       e.stopPropagation();
       const targetKey = toggle.dataset.open;
-
       containers.forEach(container => {
         if (container.dataset.open === targetKey) {
           const isVisible = container.style.display === "block";
-
-          // Спочатку ховаємо всі
           containers.forEach(el => el.style.display = "none");
-
-          // Знімаємо обертання з усіх стрілок
-          document.querySelectorAll(`${toggleSelector} .questions-arrow-down.small`).forEach(arrow => {
-            arrow.classList.remove("rotate-180");
-          });
-
+          document.querySelectorAll(`${toggleSelector} .questions-arrow-down.small`).forEach(arrow => arrow.classList.remove("rotate-180"));
           if (!isVisible) {
             container.style.display = "block";
-
             const arrowSmall = toggle.querySelector(".questions-arrow-down.small");
-            if (arrowSmall) {
-              arrowSmall.classList.add("rotate-180");
-            }
+            if (arrowSmall) arrowSmall.classList.add("rotate-180");
           }
         }
       });
     });
   });
 
-  // ❌ Клік поза – закриває підменю і головне
   document.addEventListener("click", function (e) {
     toggles.forEach(toggle => {
       const targetKey = toggle.dataset.open;
       const container = document.querySelector(`.container-text-questions[data-open="${targetKey}"]`);
-
-      if (
-        container &&
-        !container.contains(e.target) &&
-        !toggle.contains(e.target)
-      ) {
+      if (container && !container.contains(e.target) && !toggle.contains(e.target)) {
         container.style.display = "none";
-
         const arrowSmall = toggle.querySelector(".questions-arrow-down.small");
-        if (arrowSmall) {
-          arrowSmall.classList.remove("rotate-180");
-        }
+        if (arrowSmall) arrowSmall.classList.remove("rotate-180");
       }
     });
 
-    // Якщо клік поза головним блоком — ховаємо його
-    if (
-      containerMainElement &&
-      !containerMainElement.contains(e.target) &&
-      !toggleMainElement.contains(e.target)
-    ) {
+    if (containerMainElement && !containerMainElement.contains(e.target) && !toggleMainElement.contains(e.target)) {
       containerMainElement.style.display = "none";
-      if (arrowMainElement) {
-        arrowMainElement.classList.remove("rotate-180");
-      }
+      if (arrowMainElement) arrowMainElement.classList.remove("rotate-180");
     }
   });
 }
 
-
-
-//✅ Функція для прогрузки питань з json
+// ✅ Завантаження питань з JSON
 
 async function loadQuestions() {
   const res = await fetch('https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/questions.json');
@@ -981,7 +791,6 @@ async function loadQuestions() {
   const section = document.getElementById('questionsContainer');
 
   data.questions.forEach(q => {
-    // Генерація HTML
     const container = document.createElement('div');
     container.className = `container-questions ${q.type}`;
 
@@ -1029,18 +838,16 @@ async function loadQuestions() {
     section.appendChild(container);
   });
 
-  //  Виклик функції toggle ТУТ
   setupToggle(
-    ".open-top-title",                // toggleMain
-    ".main-container-questions",     // containerMain
-    ".open-questions",               // toggleSelector
-    ".container-text-questions",     // containerSelector
-    ".questions-arrow-down"          // mainArrowDown
+    ".open-top-title",
+    ".main-container-questions",
+    ".open-questions",
+    ".container-text-questions",
+    ".questions-arrow-down"
   );
 }
 
-
-//✅ Функція для прогрузки новин з json
+// ✅ Завантаження новин з JSON
 
 async function loadNews() {
   const res = await fetch('https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/questions.json');
@@ -1050,29 +857,27 @@ async function loadNews() {
   data.news.forEach(item => {
     const newsItem = document.createElement('div');
     newsItem.className = 'news-item';
-
     newsItem.innerHTML = `
       <img src="${item.image}" alt="thumbnail">
       <div class="news-content">
         <p class="news-about">${item.about}</p>
         <p class="news-date">${item.date}</p>
-      </div>
-    `;
-
+      </div>`;
     newsSlider.appendChild(newsItem);
   });
 
-  initVerticalSlider({
-    sliderSelector: '.news-slider',
-    itemSelector: '.news-item',
-    containerSelector: '.news-slider-container',
-    buttonSelector: '.news-more',
-    slidesPerView: 3
-});
+  requestAnimationFrame(() => {
+    initVerticalSlider({
+      sliderSelector: '.news-slider',
+      itemSelector: '.news-item',
+      containerSelector: '.news-slider-container',
+      buttonSelector: '.news-more',
+      slidesPerView: 3
+    });
+  });
 }
 
-
-//✅ Функція для прогрузки експертів з json
+// ✅ Завантаження експертів з JSON
 
 async function loadExperts() {
   try {
@@ -1083,7 +888,6 @@ async function loadExperts() {
     data.experts.forEach(expert => {
       const slide = document.createElement('div');
       slide.classList.add('card-item', 'swiper-slide');
-
       slide.innerHTML = `
         <div class="card-box-slide">
           <img src="${expert.image}" alt="User Image" class="user-image">
@@ -1091,41 +895,54 @@ async function loadExperts() {
           <p class="user-profession">${expert.position}</p>
           <div class="expert-card">
             <input type="checkbox" id="toggle-text-${expert.id}" class="toggle-checkbox-expert">
-            <p class="card-expert-description">${expert.description}
-              <span class="more-text-expert">${expert.specialties}</span>
-            </p>
+            <p class="card-expert-description">${expert.description}</p>
+            <p class="more-text-expert">${expert.specialties}</p>
           </div>
-        </div>
-        <label for="toggle-text-${expert.id}" class="card-expert-btn"></label>
-      `;
-
+        </div>`;
       swiperWrapper.appendChild(slide);
+    });
+
+    setupSlider({
+      cardListSelector: ".card-list",
+      cardItemSelector: ".card-item",
+      prevButtonSelector: ".swiper-button-prev",
+      nextButtonSelector: ".swiper-button-next",
+      paginationSelector: ".swiper-pagination",
+      slidesPerView: 3
     });
   } catch (error) {
     console.error('Помилка завантаження даних про експертів:', error);
   }
-
-  setupSlider({
-   cardListSelector: ".card-list",
-   cardItemSelector: ".card-item",
-   prevButtonSelector: ".swiper-button-prev",
-   nextButtonSelector: ".swiper-button-next",
-   paginationSelector: ".swiper-pagination",
-   slidesPerView: 3
-});
 }
 
+// ✅ Запуск всіх функцій після завантаження DOM
+
 document.addEventListener("DOMContentLoaded", async () => {
+  handleMobileMenuHover(
+    '.nav-menu-mobile.mobile-menu',
+    '.desktop-navigation-menu',
+    '.main-manu',
+    '.open-mobile-menu',
+    '.close-mobile-menu'
+  );
 
-      // Завантажуємо новини
-      await loadNews();
+  await loadNews();
+  await loadQuestions();
+  await loadExperts();
 
-      // Завантажуємо питання
-      await loadQuestions();
+  adjustImageWidth('.expertise-gallery_container', '.expertise-gallery_items img', 4, 3);
+  adjustImageWidth('.science-small-container_1', '.science_items_1 img', 2, 2);
+  adjustImageWidth('.science-small-container_2', '.science_items_2 img', 4, 3);
+  adjustImageWidth('.science-small-container_3', '.science_items_3 img', 2, 2);
 
-      // Завантажуємо експертів
-      await loadExperts();
+  addScrollEvents('.science-small-container_1');
+  addScrollEvents('.science-small-container_2');
+  addScrollEvents('.science-small-container_3');
+  addScrollEvents('.expertise-gallery_container');
+
+  addScrollWithDataAttribute('.menu-title', 'scrollTo');
 });
+
 
 </script>
 </html>
