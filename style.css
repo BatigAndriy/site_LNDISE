@@ -884,7 +884,7 @@ li.dropdown-item {
 .big-news-history {
    display: flex;
    flex-direction: row;
-   align-items: flex-start;
+   align-items: center;
    width: 100%;
    max-width: var(--max-width);
 }
@@ -1058,7 +1058,7 @@ p.history::after {
 
 
 p.history:hover::after {
-    width: 160px;
+    width: 140px;
 }
 
 
@@ -1206,7 +1206,7 @@ p.history:hover::after {
 @media screen and (max-width: 780px) {
 
     .about_us.history {
-       padding: 3.5em 1em 3em 4.5%;
+       padding: 2.5em 1em 3em 4.5%;
     }
 
 
@@ -1235,6 +1235,11 @@ p.history:hover::after {
 
     .section_container-about_us {
        padding: 0.5em 0.5em;
+    }
+
+
+    p.history {
+       padding: 0.5em 0 0em 0;
     }
 }
 
@@ -1589,7 +1594,7 @@ li.about-item {
 p.diagram-title {
     font-size: clamp(0.8rem, 1.2vw, 1.2em);
     text-transform: uppercase;
-    padding: 0.5em 0 1.5em 0;
+    padding: 0.5em 0 2.2em 0;
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
@@ -2895,7 +2900,7 @@ p.experts:hover::after {
     min-width: 3em;
     margin-left: 3.5%;
     margin-right: 3.5%;
-    max-width: 14em;
+    max-width: 13.5em;
     box-sizing: border-box;
 }
 
@@ -2905,7 +2910,7 @@ p.experts:hover::after {
    flex-direction: column;
    align-items: center;
    justify-content: flex-start;
-   min-height: 15.5em;
+   min-height: 16.5em;
 }
 
 
@@ -3092,18 +3097,17 @@ p.experts:hover::after {
 
 
 .more-text-expert {
-    visibility: hidden;
-    opacity: 0;
-    max-height: 0;
+    font-size: clamp(0.6rem, 0.8vw, 0.85rem);
+    padding: 0em 0.8em;
+    flex-direction: column;
     overflow: hidden;
-    transition: all 0.4s ease-in-out;
-}
-
-
-.toggle-checkbox-expert:checked + .card-expert-description .more-text-expert {
-    visibility: visible;
-    opacity: 1;
-    max-height: 500px;
+    font-family: 'Chakra Petch', sans-serif;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    text-align: center;
+    line-height: 1.2;
+    transition: max-height 0.4s ease-in-out;
 }
 
 
@@ -3473,7 +3477,7 @@ ul.contact__hours-list {
     margin: 0;
     width: 50%;
     border-radius: 1em;
-    min-width: 7em;
+    min-width: 9em;
     padding: 1em 1em 1em 2em;
 }
 
@@ -3526,6 +3530,10 @@ ul.contact__hours-list {
    .contact__container {
       gap: 1%;
    }
+
+    ul.contact__hours-list {
+      min-width: 8em;
+    }
 }
 
 
