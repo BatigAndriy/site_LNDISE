@@ -10,9 +10,11 @@
 Responsive cards that fit your website's content
 
 ## View
+## DESKTOP VERSION
 ![-](desktop-1.png)
 ![-](desktop-2.png)
 ![-](desktop-3.png)
+## MOBILE VERSION
 ![-](mobile-1.png)
 
 ## Prerequisites
