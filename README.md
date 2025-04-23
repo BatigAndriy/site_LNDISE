@@ -29,14 +29,16 @@ Ideal for main sections of modern websites and landing pages.
 
 ### 🖥️ Desktop Version
 
-<img src="ALL_PART/desktop-1.png" width="400">
-<img src="ALL_PART/desktop-2.png" width="400">
-<img src="ALL_PART/desktop-3.png" width="400">
+| | |
+|---|---|
+| <img src="ALL_PART/desktop-1.png" width="300"> | <img src="ALL_PART/desktop-2.png" width="300"> |
+| <img src="ALL_PART/desktop-3.png" width="300"> | |
 
 ### 📱 Mobile Version
 
-<img src="ALL_PART/mobile-1.png" width="250">
-<img src="ALL_PART/mobile-2.png" width="250">
+| | |
+|---|---|
+| <img src="ALL_PART/mobile-1.png" width="200"> | <img src="ALL_PART/mobile-2.png" width="200"> |
 
 ---
 
