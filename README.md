@@ -9,13 +9,14 @@
 ## Short description of project:
 Responsive cards that fit your website's content
 
-## View
-## DESKTOP VERSION
+## VIEW
+## DESKTOP version
 ![-](desktop-1.png)
 ![-](desktop-2.png)
 ![-](desktop-3.png)
-## MOBILE VERSION
+## MOBILE version
 ![-](mobile-1.png)
+![-](mobile-2.png)
 
 ## Prerequisites
 Before you begin, ensure you have met the following requirements:
