@@ -385,6 +385,12 @@ li.dropdown-item {
 }
 
 
+.mobile-logo-small {
+   display: flex;
+   align-items: center;
+}
+
+
 .menu-close-btn {
     color: hsl(0, 0%, 13%);
     font-size: 22px;
@@ -582,9 +588,10 @@ li.dropdown-item {
     }
 
 
+
     .logo-small-mobile {
        width: 2.6em;
-       margin: 0em 0 0 0.5em;
+       margin: 0em 0 0 0em;
     }
 
 
@@ -1141,6 +1148,18 @@ p.history:hover::after {
     max-width: 100%;
     font-family: Mulish, sans-serif;
     transition: transform 0.4s ease-in-out;
+}
+
+
+.a-in-text {
+    font-size: clamp(0.7rem, 1.15vw, 1.15em);
+    font-weight: 500;
+    letter-spacing: 0.05px;
+    text-align: justify;
+    color: black;
+    font-family: Mulish, sans-serif;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
 }
 
 
