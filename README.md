@@ -1,35 +1,64 @@
-# site-for-lab
+# 📦 Responsive Cards for the Main Section of the Website
 
-![GitHub repo size](https://img.shields.io/github/repo-size/BatigAndriy/site_LAB)
-![GitHub stars](https://img.shields.io/github/stars/BatigAndriy/footer-2?style=social)
-![GitHub forks](https://img.shields.io/github/forks/BatigAndriy/footer-2?style=social)
-[![Twitter Follow](https://img.shields.io/twitter/follow/yourtwitterhandle?style=social)](https://twitter.com/yourtwitterhandle)
-![YouTube Video Views](https://img.shields.io/youtube/views/dQw4w9WgXcQ?style=social)
+<p align="left">
+  <img src="https://img.shields.io/github/repo-size/BatigAndriy/site_LAB">
+  <img src="https://img.shields.io/github/stars/BatigAndriy/footer-2?style=social">
+  <img src="https://img.shields.io/github/forks/BatigAndriy/footer-2?style=social">
+  <a href="https://twitter.com/yourtwitterhandle">
+    <img src="https://img.shields.io/twitter/follow/yourtwitterhandle?style=social">
+  </a>
+  <img src="https://img.shields.io/youtube/views/dQw4w9WgXcQ?style=social">
+</p>
 
-## Short description of project:
-Responsive cards that fit your website's content
+---
 
-## VIEW
-## DESKTOP version
-![-](ALL_PART/desktop-1.png)
-![-](ALL_PART/desktop-2.png)
-![-](ALL_PART/desktop-3.png)
-## MOBILE version
-![-](ALL_PART/mobile-1.png)
-![-](ALL_PART/mobile-2.png)
+## 📝 Short Description
 
-## Prerequisites
-Before you begin, ensure you have met the following requirements:
-- Git must be installed on your operating system.
+Responsive cards that automatically adjust to content and screen size.  
+Ideal for main sections of modern websites and landing pages.
 
-## Installing
-To install, follow these steps:
+---
 
-## Linux and macOS:
+## 🌐 Live Demo
+
+🔗 [https://ztdlndise.netlify.app/](https://ztdlndise.netlify.app/)
+
+---
+
+## 🖼️ Preview
+
+### 🖥️ Desktop Version
+
+<img src="ALL_PART/desktop-1.png" width="400">
+<img src="ALL_PART/desktop-2.png" width="400">
+<img src="ALL_PART/desktop-3.png" width="400">
+
+### 📱 Mobile Version
+
+<img src="ALL_PART/mobile-1.png" width="250">
+<img src="ALL_PART/mobile-2.png" width="250">
+
+---
+
+## 🧾 Features
+
+- 📱 Fully responsive design
+- ⚡ Lightweight and fast
+- 🧩 Easy to integrate and customize
+- 🌐 Compatible with all major browsers
+- 🧠 Semantic HTML + clean CSS structure
+
+---
+
+## 💻 Prerequisites
+
+Make sure Git is installed on your system.
+
+---
+
+## 🛠️ Installing
+
+### Linux / macOS:
+
+```bash
 sudo git clone https://github.com/BatigAndriy/site_LNDISE
-
-## Windows:
-git clone clone https://github.com/BatigAndriy/site_LNDISE
-
-## License
-This project is free to use and does not contain any license.
