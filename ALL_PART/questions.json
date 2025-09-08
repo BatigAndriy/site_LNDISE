@@ -282,6 +282,11 @@
 
   "news": [
     {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/news-section/news-exp_0.jpg",
+      "about": "Круглий стіл «Залізнична євроінтеграція»: участь ЛНДІСЕ, лабораторій та директора Щербака.",
+      "date": "4 вересня 2025"
+    },
+    {
       "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/news-section/news-exp_1.jpg",
       "about": "Нарада експертів із представниками правоохоронних органів.",
       "date": "3 квітня 2025"
