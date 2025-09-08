@@ -240,7 +240,7 @@
       <p class="expertise-section_title-gallery">Досліджувані випадки</p>
       <div class="expertise-section_container-gallery">
          <div class="expertise-gallery_container">
-           <div class="expertise-gallery_items">
+            <div class="expertise-gallery_items">
                 <img src="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/down_section/gallery_work-1.jpg" alt="Gallery Image" />
                 <img src="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/down_section/gallery_work-2.jpg" alt="Gallery Image" />
             </div>
@@ -300,6 +300,9 @@
                  <div class="science_items_1">
                     <img src="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/science-section/science_5_big.png" alt="Image" />
                 </div>
+                 <div class="science_items_1">
+                    <img src="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/science-section/science_6_big.png" alt="Image" />
+                </div>
              </div>
           </div>
        </div>
@@ -339,6 +342,9 @@
                 </div>
                  <div class="science_items_2">
                     <img src="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/science-section/science_11-1_small.png" alt="Image" />
+                </div>
+                  <div class="science_items_2">
+                    <img src="https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/science-section/science_12_small.png" alt="Image" />
                 </div>
              </div>
           </div>
@@ -411,7 +417,7 @@
               <ul class="contact__hours-list">
                 <li class="contact__hours-title">Графік роботи</li>
                 <li class="contact__hours-item">Пн–Чт: 8:00 – 16:45</li>
-                <li class="contact__hours-item">Пт: 8:00 – 15:30</li>
+                <li class="contact__hours-item">Пт: 8:00 – 15:330</li>
                 <li class="contact__hours-item">Сб-Нд: вихідний</li>
               </ul>
            </div>
@@ -680,19 +686,19 @@ function adjustImageWidth(containerSelector, imageSelector, imageWidthOverride =
 
 // ✅ Горизонтальна прокрутка (повертає назад)
 
-function addScrollEvents(containerElement) {
-  const container = document.querySelector(containerElement);
-  if (!container) return;
+<!--function addScrollEvents(containerElement) {-->
+<!--  const container = document.querySelector(containerElement);-->
+<!--  if (!container) return;-->
 
-  const scrollToStart = () => {
-    container.scrollTo({ left: 0, behavior: 'smooth' });
-  };
+<!--  const scrollToStart = () => {-->
+<!--    container.scrollTo({ left: 0, behavior: 'smooth' });-->
+<!--  };-->
 
-  container.addEventListener('mouseup', scrollToStart);
-  container.addEventListener('mouseleave', scrollToStart);
-  container.addEventListener('touchend', scrollToStart);
-  container.addEventListener('touchcancel', scrollToStart);
-}
+<!--  container.addEventListener('mouseup', scrollToStart);-->
+<!--  container.addEventListener('mouseleave', scrollToStart);-->
+<!--  container.addEventListener('touchend', scrollToStart);-->
+<!--  container.addEventListener('touchcancel', scrollToStart);-->
+<!--}-->
 
 // ✅ Прокрутка по data-атрибуту
 
@@ -709,6 +715,99 @@ function addScrollWithDataAttribute(buttonSelector, dataAttr) {
     });
   });
 }
+
+function addScrollEvents(containerSelector, imageSelector) {
+  const el = document.querySelector(containerSelector);
+  if (!el) return;
+
+  const isMobile = window.innerWidth <= 600;
+
+  // --- Завжди стартуємо зліва ---
+  requestAnimationFrame(() => {
+    el.style.scrollBehavior = 'auto';
+    el.scrollLeft = 0;
+    el.style.scrollBehavior = '';
+  });
+
+  // функція для вирівнювання по найближчому слайду
+  function snapToSlide() {
+    const images = el.querySelectorAll(imageSelector);
+    if (!images.length) return;
+
+    const style = getComputedStyle(el);
+    const gap = parseFloat(style.gap || 0);
+
+    // Ширина одного "слайда" включає сам елемент і gap між ними
+    const slideFullWidth = images[0].offsetWidth + gap;
+
+    // Знаходимо найближчий індекс
+    const rawIndex = el.scrollLeft / slideFullWidth;
+    const snappedIndex = Math.round(rawIndex);
+
+    // Розрахунок точної позиції
+    const snappedScrollLeft = snappedIndex * slideFullWidth;
+
+    el.style.scrollBehavior = 'smooth';
+    el.scrollLeft = snappedScrollLeft;
+    el.style.scrollBehavior = '';
+  }
+
+  if (!isMobile) {
+    let isDragging = false;
+    let startX, scrollLeft;
+    let velocity = 0;
+    let lastX = 0;
+    let momentumID;
+
+    const onMouseDown = (e) => {
+      isDragging = true;
+      el.classList.add('dragging');
+      startX = e.pageX - el.offsetLeft;
+      scrollLeft = el.scrollLeft;
+      lastX = e.pageX;
+      cancelAnimationFrame(momentumID);
+      e.preventDefault();
+    };
+
+    const onMouseMove = (e) => {
+      if (!isDragging) return;
+      const x = e.pageX - el.offsetLeft;
+      const walk = (x - startX);
+      el.scrollLeft = scrollLeft - walk;
+
+      velocity = e.pageX - lastX;
+      lastX = e.pageX;
+    };
+
+    const onMouseUp = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      el.classList.remove('dragging');
+
+      // --- Інерція ---
+      const momentum = () => {
+        el.scrollLeft -= velocity;
+        velocity *= 0.95;
+        if (Math.abs(velocity) > 0.5) {
+          momentumID = requestAnimationFrame(momentum);
+        } else {
+          snapToSlide(); // після інерції підліплюємо
+        }
+      };
+      momentum();
+    };
+
+    el.addEventListener('mousedown', onMouseDown);
+    el.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+  }
+
+  el.style.webkitOverflowScrolling = 'touch';
+}
+
+
+
+
 
 // ✅ Вертикальний слайдер новин
 
@@ -965,13 +1064,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   adjustImageWidth('.science-small-container_2', '.science_items_2 img', 4, 3);
   adjustImageWidth('.science-small-container_3', '.science_items_3 img', 2, 2);
 
-  addScrollEvents('.science-small-container_1');
-  addScrollEvents('.science-small-container_2');
-  addScrollEvents('.science-small-container_3');
-  addScrollEvents('.expertise-gallery_container');
+  addScrollEvents('.science-small-container_1', '.science_items_1');
+  addScrollEvents('.science-small-container_2', '.science_items_2');
+  addScrollEvents('.science-small-container_3', '.science_items_3');
+  addScrollEvents('.expertise-gallery_container', '.expertise-gallery_items');
+
 
   addScrollWithDataAttribute('.menu-title', 'scrollTo');
 });
+
+
 
 
 </script>
