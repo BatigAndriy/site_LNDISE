@@ -322,7 +322,7 @@
       "name": "Андрій Тростянчин",
       "position": "провідний науковий співробітник",
       "description": "д.т.н., професор, вища освіта за спеціальністю «Матеріалознавство».",
-      "specialties": "експертна спеціальніість 8.9.",
+      "specialties": "експертна спеціальність 8.9.",
       "id": "expert-8_1"
     },
     {
@@ -330,7 +330,7 @@
       "name": "Тарас Ковбасюк",
       "position": "судовий експерт",
       "description": "к.т.н., вища освіта за спеціальністю «Матеріалознавство».",
-      "specialties": "експертна спеціальніість 8.9.",
+      "specialties": "експертна спеціальність 8.9.",
       "id": "expert-8_2"
     },
     {
@@ -357,14 +357,6 @@
       "description": "к.т.н., доцент, вища освіта за спеціальністю «Рухомий склад та спеціальна техніка залізничного транспорту».",
       "specialties": "експертна спеціальність - 10.11.",
       "id": "expert-9"
-    },
-    {
-      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/expert-10.jpg",
-      "name": "Олена Баль",
-      "position": "провідний науковий співробітник",
-      "description": "к.т.н., доцент, завідувач кафедри, вища освіта за спеціальністю «Залізничні споруди та колійне господарство».",
-      "specialties": "експертні спеціальності - 10.13.1, 10.13.2.",
-      "id": "expert-10"
     },
     {
       "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/expert-2.jpg",
