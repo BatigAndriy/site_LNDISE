@@ -322,8 +322,16 @@
       "name": "Андрій Тростянчин",
       "position": "провідний науковий співробітник",
       "description": "д.т.н., професор, вища освіта за спеціальністю «Матеріалознавство».",
-      "specialties": "експертна спеціальность 10.3.",
-      "id": "expert-8"
+      "specialties": "експертна спеціальность 8.9.",
+      "id": "expert-8_1"
+    },
+    {
+      "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/expert-8_2.jpg",
+      "name": "Тарас Ковбасюк",
+      "position": "провідний науковий співробітник",
+      "description": "к.т.н., вища освіта за спеціальністю «Матеріалознавство».",
+      "specialties": "експертна спеціальность 8.9.",
+      "id": "expert-8_2"
     },
     {
       "image": "https://raw.githubusercontent.com/BatigAndriy/site_LNDISE/main/ALL_PART/images/slide-section-experts/expert-6.jpg",
